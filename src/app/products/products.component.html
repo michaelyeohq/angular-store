@@ -1,4 +1,10 @@
-<table mat-table [dataSource]="products" class="mat-elevation-z8">
+<app-button
+  color="{{ showAddProduct ? 'red' : 'green' }}"
+  text="{{ showAddProduct ? 'Close' : 'Add' }}"
+  (btnClick)="toggleAddProduct()"
+></app-button>
+<app-form *ngIf="showAddProduct" (onProductAdded)="onAddProduct($event)"></app-form>
+<table mat-table *ngIf="!showAddProduct" [dataSource]="products" class="mat-elevation-z8">
   <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 

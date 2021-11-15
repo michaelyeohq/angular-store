@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 export interface IProduct {
-  id: number;
+  id?: number;
   name: string;
   price: number;
   quantity: number;
@@ -16,8 +16,14 @@ const ELEMENT_DATA: IProduct[] = [];
 export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'price', 'quantity', 'actions'];
   products: IProduct[] = [];
+  showAddProduct: boolean = false;
 
   constructor(private productService: ProductService) {}
+
+  toggleAddProduct() {
+    console.log('Add Product Pressed');
+    this.showAddProduct = !this.showAddProduct;
+  }
 
   ngOnInit(): void {
     this.productService
@@ -29,9 +35,14 @@ export class ProductsComponent implements OnInit {
     this.productService
       .deleteProduct(product)
       .subscribe(
-        () =>
-          (this.products = this.products.filter((p) => p.id !== product.id))
+        () => (this.products = this.products.filter((p) => p.id !== product.id))
       );
+  }
+
+  onAddProduct(product: IProduct) {
+    this.productService
+      .addProduct(product)
+      .subscribe((product) => this.products.push(product));
   }
 
   onUpdateProduct(product: IProduct) {
