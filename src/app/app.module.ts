@@ -7,6 +7,8 @@ import { ProductsComponent } from './products/products.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table'  
+import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { MatTableModule } from '@angular/material/table'
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
