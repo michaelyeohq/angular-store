@@ -9,10 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import { FormComponent } from './form/form.component';
-import { ButtonComponent } from './button/button.component';
+import { FormComponent } from './products/form/form.component';
+import { ButtonComponent } from './products/button/button.component';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProductsTableComponent } from './products/products-table/products-table.component';
+import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AboutComponent,
     FormComponent,
     ButtonComponent,
+    ProductsTableComponent,
+    LoginComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +38,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HttpClientModule,
     FormsModule,
     MatSnackBarModule,
+    AppRoutingModule,
   ],
   providers: [MatSnackBarModule],
   bootstrap: [AppComponent],

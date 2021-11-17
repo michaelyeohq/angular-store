@@ -7,7 +7,6 @@ export interface IProduct {
   quantity: number;
 }
 
-const ELEMENT_DATA: IProduct[] = [];
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -19,6 +18,8 @@ export class ProductsComponent implements OnInit {
   showAddProduct: boolean = false;
 
   constructor(private productService: ProductService) {}
+
+  // ngOnInit(): void {}
 
   toggleAddProduct() {
     console.log('Add Product Pressed');
@@ -39,13 +40,13 @@ export class ProductsComponent implements OnInit {
       );
   }
 
+  onUpdateProduct(product: IProduct) {
+    console.log('Edit button pressed!', product.id);
+  }
+
   onAddProduct(product: IProduct) {
     this.productService
       .addProduct(product)
       .subscribe((product) => this.products.push(product));
-  }
-
-  onUpdateProduct(product: IProduct) {
-    console.log('Edit button pressed!', product.id);
   }
 }

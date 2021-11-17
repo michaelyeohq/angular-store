@@ -14,6 +14,7 @@ const httpOptions = {
 })
 export class ProductService {
   private apiUrl = 'http://localhost:5000/api/products';
+  products: IProduct[] = [];
 
   constructor(private http: HttpClient) {}
 

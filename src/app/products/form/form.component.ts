@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { IProduct } from '../products/products.component';
-import { ProductService } from '../services/product.service';
+import { IProduct } from '../products.component';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -21,7 +20,6 @@ export class FormComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   constructor(
-    private productService: ProductService,
     private _snackBar: MatSnackBar
   ) {}
 
@@ -38,6 +36,7 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     if (!this.name) {
+      
       alert('Please add a product');
       return;
     }

@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  loadedPage = 'products';
+  // loadedPage = 'products';
 
-  onNavigate(page: string) {
-    this.loadedPage = page;
-    console.log('Page Selected: ', page);
-  }
+  // onNavigate(page: string) {
+  //   this.loadedPage = page;
+  //   console.log('Page Selected: ', page);
+  // }
 }
