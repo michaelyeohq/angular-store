@@ -13,10 +13,13 @@ import { FormComponent } from './products/form/form.component';
 import { ButtonComponent } from './products/button/button.component';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ProductsTableComponent } from './products/products-table/products-table.component';
-import { LoginComponent } from './login/login.component';
+// import { ProductsTableComponent } from './products/products-table/products-table.component';
+import { LoginComponent } from './auth/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,11 @@ import { MainComponent } from './main/main.component';
     AboutComponent,
     FormComponent,
     ButtonComponent,
-    ProductsTableComponent,
     LoginComponent,
     MainComponent,
+    SignupComponent,
+    AuthComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

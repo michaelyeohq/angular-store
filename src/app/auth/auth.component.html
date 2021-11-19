@@ -1,0 +1,2 @@
+<app-login *ngIf="loadedAuth == 'login'" (currentAuth)="changeAuthPage($event)"></app-login>
+<app-signup *ngIf="loadedAuth == 'signup'" (currentAuth)="changeAuthPage($event)"></app-signup>

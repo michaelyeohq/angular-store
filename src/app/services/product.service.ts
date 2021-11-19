@@ -19,7 +19,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.apiUrl);
+    return this.http.get<IProduct[]>(this.apiUrl, { withCredentials: true});
   }
 
   deleteProduct(product: IProduct): Observable<IProduct> {

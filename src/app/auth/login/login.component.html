@@ -1,0 +1,39 @@
+<div *ngIf="isLoading" class="loading">
+  <app-loading></app-loading>
+</div>
+<div class="container" *ngIf="!isLoading">
+  <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+  <div class="alert alert-success" *ngIf="success">{{ success }}</div>
+  <div class="col-xs-12">
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="username"
+          id="username"
+          class="form-control"
+          ngModel
+          name="username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          ngModel
+          name="password"
+          required
+        />
+      </div>
+      <div>
+        <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">Log In</button>
+      </div>
+      <div (click)="switchToSignUp()" class="signup">
+        Don't have an account? Click here
+      </div>
+    </form>
+  </div>
+</div>
