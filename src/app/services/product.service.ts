@@ -24,10 +24,10 @@ export class ProductService {
 
   deleteProduct(product: IProduct): Observable<IProduct> {
     const url = `${this.apiUrl}/${product.id}`;
-    return this.http.delete<IProduct>(url);
+    return this.http.delete<IProduct>(url, { withCredentials: true});
   }
 
   addProduct(product: IProduct): Observable<IProduct> {
-    return this.http.post<IProduct>(this.apiUrl, product, httpOptions);
+    return this.http.post<IProduct>(this.apiUrl, product, { withCredentials: true});
   }
 }

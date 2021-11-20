@@ -20,6 +20,7 @@ import { MainComponent } from './main/main.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingComponent } from './loading/loading.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { LoadingComponent } from './loading/loading.component';
     MatSnackBarModule,
     AppRoutingModule,
   ],
-  providers: [MatSnackBarModule],
+  providers: [MatSnackBarModule, CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

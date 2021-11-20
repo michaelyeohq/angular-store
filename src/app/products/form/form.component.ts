@@ -19,9 +19,7 @@ export class FormComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  constructor(
-    private _snackBar: MatSnackBar
-  ) {}
+  constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {}
 
@@ -36,7 +34,6 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     if (!this.name) {
-      
       alert('Please add a product');
       return;
     }

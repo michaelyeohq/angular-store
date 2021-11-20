@@ -1,6 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,11 @@ export class LoginComponent implements OnInit {
   error: string | null = null;
   success: string | null = null;
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router,
+    private cookieService: CookieService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -26,6 +33,8 @@ export class LoginComponent implements OnInit {
         this.error = null;
         this.success = res.message;
         this.isLoading = false;
+        console.log(this.cookieService.get('jwt'));
+        this.router.navigate(['/home']);
       },
       (errorMessage) => {
         console.log(errorMessage);

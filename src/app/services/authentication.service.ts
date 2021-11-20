@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { User } from '../auth/user.model';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 interface IUserData {
   firstName: string;
@@ -22,7 +25,7 @@ export class AuthenticationService {
   signUpRoute: string = 'http://localhost:5000/api/users';
   logInRoute: string = 'http://localhost:5000/api/users/authenticate';
   // logInRoute: string = 'http://localhost:5000'
-  user = new Subject<IUserData>();
+  user = new Subject<User>();
   handleError = (errorRes: { error: { message: string } }) => {
     console.log(errorRes);
     let errMessage = 'An unknown error occured';
@@ -34,7 +37,11 @@ export class AuthenticationService {
     return throwError(errMessage);
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private cookieService: CookieService
+  ) {}
 
   signup(data: any) {
     return this.http
@@ -50,5 +57,12 @@ export class AuthenticationService {
         withCredentials: true,
       })
       .pipe(catchError(this.handleError));
+  }
+
+  logout() {
+    if (this.cookieService.check('jwt')) {
+      this.cookieService.delete('jwt')
+      this.router.navigate(['/auth'])
+    }
   }
 }
