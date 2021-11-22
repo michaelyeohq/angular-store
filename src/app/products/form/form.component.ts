@@ -16,6 +16,7 @@ export class FormComponent implements OnInit {
   name!: string;
   price!: number;
   quantity!: number;
+  image!: string;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
@@ -41,6 +42,7 @@ export class FormComponent implements OnInit {
       name: this.name,
       price: this.price,
       quantity: this.quantity,
+      image: this.image,
     };
 
     this.onProductAdded.emit(newProduct);

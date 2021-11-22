@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../services/product.service';
+import { ProductService } from '../shared/services/product.service';
 export interface IProduct {
   id?: number;
   name: string;
   price: number;
+  image: string;
   quantity: number;
 }
 
@@ -13,9 +14,17 @@ export interface IProduct {
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'price', 'quantity', 'actions'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'price',
+    'quantity',
+    'image',
+    'actions',
+  ];
   products: IProduct[] = [];
   showAddProduct: boolean = false;
+  isLoading = false;
 
   constructor(private productService: ProductService) {}
 
@@ -45,8 +54,10 @@ export class ProductsComponent implements OnInit {
   }
 
   onAddProduct(product: IProduct) {
-    this.productService
-      .addProduct(product)
-      .subscribe((product) => this.products.push(product));
+    this.isLoading = true;
+    this.productService.addProduct(product).subscribe((product) => {
+      this.products.push(product);
+      this.isLoading = false;
+    });
   }
 }

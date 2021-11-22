@@ -3,10 +3,20 @@
   text="{{ showAddProduct ? 'Close' : 'Add' }}"
   (btnClick)="toggleAddProduct()"
 ></app-button>
-<app-form *ngIf="showAddProduct" (onProductAdded)="onAddProduct($event)"></app-form>
+<app-form
+  *ngIf="showAddProduct && !isLoading"
+  (onProductAdded)="onAddProduct($event)"
+></app-form>
+<div *ngIf="isLoading" class="loading">
+  <app-loading></app-loading>
+</div>
 <!-- <app-products-table *ngIf="!showAddProduct" [products]="products"></app-products-table> -->
-<table mat-table *ngIf="!showAddProduct" [dataSource]="products" class="mat-elevation-z8">
-
+<table
+  mat-table
+  *ngIf="!showAddProduct"
+  [dataSource]="products"
+  class="mat-elevation-z8"
+>
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>Id</th>
     <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -27,11 +37,19 @@
     <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
   </ng-container>
 
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef>Image</th>
+    <td mat-cell *matCellDef="let element">
+      <img style="width: 120px; height: 120px;" src="{{ element.image }}" alt="" />
+    </td>
+  </ng-container>
+
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element">
-      <button mat-button (click)="onUpdateProduct(element)">Edit</button>
-      <button mat-button (click)="onDeleteProduct(element)">Delete</button>
+      <button mat-button (click)="onDeleteProduct(element)">
+        <i class="fas fa-trash-alt" style="font-size: 24px; color: red"></i>
+      </button>
     </td>
   </ng-container>
 

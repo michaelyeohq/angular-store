@@ -21,6 +21,9 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingComponent } from './loading/loading.component';
 import { CookieService } from 'ngx-cookie-service';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
+import { CartComponent } from './cart/cart.component';
+import { ShoppingComponent } from './shopping/shopping.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { CookieService } from 'ngx-cookie-service';
     SignupComponent,
     AuthComponent,
     LoadingComponent,
+    DropdownDirective,
+    CartComponent,
+    ShoppingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,30 @@
+
+img {
+  width: 64px;
+  border: 5px none #1c6ea4;
+  border-radius: 17px;
+}
+
+.card {
+  padding: 20px;
+  text-align: center;
+  border: 5px none #1c6ea4;
+  border-radius: 17px;
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 15px;
+  transition: 0.3s ease-in-out;
+}
+
+.card img:hover {
+  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.flex {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
